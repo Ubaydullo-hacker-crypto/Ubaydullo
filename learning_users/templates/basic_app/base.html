@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<nav class = "navbar navbar-default navbar-static-top">
+		<div class="container">
+			<td class="nav navbar-nav">
+				<tr><a class="navbar-brand" href="{% url 'index' %}"><strong>Home</strong></a></tr>
+				<tr><a class="navbar-brand" href="{% url 'admin:index' %}"><i>Admin</i></a></tr>
+				<tr><a class="navbar-brand" href="{% url 'basic_app:register' %}"><i>Registration</i></a></tr>
+
+				{% if user.is_authenticated %}
+					<tr><a class="navbar-brand" href="{% url 'logout' %}"><i>Logout</i></a></tr>
+				{% else %}
+					<tr><a class="navbar-brand" href="{% url 'basic_app:user_login' %}"><i>Login</i></a></tr>
+				{% endif %}
+
+			</td>
+		</div>
+	</nav>
+
+	<div class="container">
+		{% block body_block %}
+		{% endblock %}
+	</div>
+</body>
+</html>
